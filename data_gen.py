@@ -30,5 +30,7 @@ with open('french_english.csv', 'w', newline='', encoding='utf-8') as csvfile:
                 writer.writerow([word, meaning, pronunciation, part_of_speech])
         except:
             count += 1
-            print(f'{count}, {french_words.index(word)}')
+            print(f'{count}, {french_words.index(word)}, {word}')
+            with open('bug.csv', 'a', newline='', encoding='utf-8') as bugFile:
+                print(f'{count}, {french_words.index(word)}, {word}, {"not bug" if word[-1] == "s" else "bug"}', file=bugFile)
             pass
